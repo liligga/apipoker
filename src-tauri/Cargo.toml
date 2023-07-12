@@ -1,11 +1,11 @@
 [package]
 name = "apipoker"
-version = "0.0.0"
+version = "0.0.1"
 description = "A Desktop app for making HTTP requests"
 authors = ["Igor Grebennikov"]
 license = ""
 repository = ""
-edition = "2023"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

@@ -6,12 +6,18 @@
   async function make_request(){
     let request = {
       url: "https://jsonplaceholder.typicode.com/posts",
-      body: "something BODY",
-      params:  "value",
+      params: {"key1": "value1"},
       method: "GET",
+      body: {
+          request_body_type: "null",
+          request_body_contents: JSON.stringify({}),
+      },
+      headers: {
+        "Content-Type": "application/json"
+      }
     }
-    console.log(url);
-    await invoke("make_request", {request: request})
+    console.log(request);
+    await invoke("make_request", {request})
   }
 </script>
 

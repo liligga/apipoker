@@ -6,21 +6,11 @@ use serde;
 
 
 
-#[derive(Debug, serde::Deserialize)]
-struct UrlParams {
-    params: HashMap<String, String>,
-}
-
 
 #[derive(Debug, serde::Deserialize)]
 struct RequestBody {
     request_body_type: String,
     request_body_contents: String,
-}
-
-#[derive(Debug, serde::Deserialize)]
-struct RequestHeaders {
-    headers: HashMap<String, String>,
 }
 
 
@@ -39,10 +29,10 @@ enum RequestMethod {
 #[derive(Debug, serde::Deserialize)]
 struct Request {
     url: String,
-    params: UrlParams,
+    params: HashMap<String, String>,
     method: RequestMethod,
     body: RequestBody,
-    headers: RequestHeaders,
+    headers: HashMap<String, String>,
 }
 
 #[derive(Debug)]
@@ -72,7 +62,7 @@ fn save_request(request: Request) -> String {
 }
 
 #[tauri::command]
-fn save_response(request: Request, response: Response) {
+fn save_response(request: Request, response: Response) -> String {
     println!("This is the method for saving responses, {request:?}, {response:?}");
     format!("This is the method for saving responses, {request:?}, {response:?}")
 }

@@ -1,17 +1,22 @@
 <script>
   import { invoke } from "@tauri-apps/api/tauri"
 
-  let name = "";
-  let greetMsg = ""
+  let url = "";
 
-  async function greet(){
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    greetMsg = await invoke("greet", { name })
+  async function make_request(){
+    let request = {
+      url: "https://jsonplaceholder.typicode.com/posts",
+      body: "something BODY",
+      params:  "value",
+      method: "GET",
+    }
+    console.log(url);
+    await invoke("make_request", {request: request})
   }
 </script>
 
 <div>
-  <form on:submit|preventDefault={greet}>
+  <form on:submit|preventDefault={make_request}>
     <div class="row">
       <select name="http-method" >
         <option value="GET">GET</option>
